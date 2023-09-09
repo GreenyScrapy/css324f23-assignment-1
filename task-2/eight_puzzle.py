@@ -49,6 +49,21 @@ def h1(s):
     return res
 
 def h3(s):
-    # implement this function
     board, _, _ = s
-    return 0
+    goal = (1, 2, 3, 4, 5, 6 ,7, 8, 0)
+    res = 0
+
+    for tile in range (1,9) :
+        current_row, current_col = findPos(board, tile)
+        goal_row, goal_col = findPos(goal, tile)
+
+        # calculate distance
+        dst = abs(current_row - goal_row) + abs(current_col - goal_col)
+        res += dst
+    return res
+
+def findPos(board, tile) :
+    for row in range (3) :
+        for col in range (3) :
+            if board[row * 3 + col] == tile :
+                return row, col
