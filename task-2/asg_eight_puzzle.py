@@ -5,7 +5,7 @@ import informed
 goal_node, n_visits = informed.a_star_graph_search(problem, problem.h3)
 if goal_node is not None:
     print("Solution")
-    print("========")
+    print("========")   
     utils.print_solution(goal_node)
     print("========")
     print("Path cost = %d" % goal_node[3])

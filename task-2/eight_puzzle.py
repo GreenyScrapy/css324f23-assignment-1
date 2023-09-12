@@ -51,19 +51,31 @@ def h1(s):
 def h3(s):
     board, _, _ = s
     goal = (1, 2, 3, 4, 5, 6 ,7, 8, 0)
-    res = 0
+    num_out_of_target = 0
 
-    for tile in range (1,9) :
-        current_row, current_col = findPos(board, tile)
-        goal_row, goal_col = findPos(goal, tile)
+    for i in range(1,9):
+        # if board[i] != 0:
+        #     goal_row = goal[i] // 3
+        #     goal_col = goal[i] % 3
+        #     current_row = board[i] // 3
+        #     current_col = board[i] % 3
+        #     if goal_row != current_row:
+        #         num_out_of_target += 1
+        #     if goal_col != current_col:
+        #         num_out_of_target += 1
+        current_row, current_col = findPos(board,i)
+        goal_row, goal_col = findPos(goal,i)
+        if current_row != goal_row:
+            num_out_of_target += 1
+        if current_col != goal_col:
+            num_out_of_target += 1
+        
 
-        # calculate distance
-        dst = abs(current_row - goal_row) + abs(current_col - goal_col)
-        res += dst
-    return res
+    return num_out_of_target
 
 def findPos(board, tile) :
     for row in range (3) :
         for col in range (3) :
             if board[row * 3 + col] == tile :
                 return row, col
+
